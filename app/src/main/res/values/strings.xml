@@ -1,0 +1,24 @@
+<resources>
+
+    <string name="app_name">WhatsHisFace</string>
+    <string name="movie_button">Who\'s That Actor From These Movies?</string>
+    <string name="actor_button">What\'s That Movie With These Actors?</string>
+
+    <string name="find_actor_input_hint">Enter a Movie Title</string>
+    <string name="find_actor_add_button">Add Movie to List</string>
+    <string name="find_actor_your_list">Your List</string>
+    <string name="find_actor_search_button">Search</string>
+
+    <string name="list_item_movie_remove">X</string>
+
+    <string name="toast_no_title_entered">Please enter a movie title.</string>
+    <string name="toast_movie_not_found">Movie not found.</string>
+
+    <string name="fragment_result_actor_title_text">Our Best Guess&#8230;</string>
+    <string name="fragment_result_actor_name">Name: </string>
+    <string name="fragment_result_actor_dob">Date of Birth: </string>
+    <string name="fragment_result_actor_bio">Bio: </string>
+    <string name="fragment_result_actor_top_movies">Top Billed Movies: </string>
+    <string name="fragment_result_actor_content_description">Celebrity portrait image</string>
+
+</resources>

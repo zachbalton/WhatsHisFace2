@@ -1,5 +1,6 @@
 package com.skylarkingstudios.whatshisface;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -14,14 +16,11 @@ import android.widget.Toast;
 
 import com.skylarkingstudios.whatshisface.model.Actor;
 import com.skylarkingstudios.whatshisface.model.ActorList;
-import com.skylarkingstudios.whatshisface.model.Movie;
 import com.skylarkingstudios.whatshisface.model.RetrofitEvent;
 import com.skylarkingstudios.whatshisface.model.remote.TheMovieDBService;
 import com.skylarkingstudios.whatshisface.model.remote.TheMovieDBServiceGenerator;
 import com.skylarkingstudios.whatshisface.model.MovieList;
 import com.skylarkingstudios.whatshisface.model.MovieResults;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -42,19 +41,22 @@ public class FindActorActivity extends FragmentActivity {
     private ActorList mActorList;
     private List<Actor> mActors;
     private List<Integer> mActorIds;
+    private Actor mActor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actor_find);
         loadPanel = (RelativeLayout) findViewById(R.id.loading_panel);
-        loadPanel.setVisibility(View.GONE);
 
-        EventBus.getDefault().register(this);
+        mMovies = MovieList.get(this);
+
+        if (mMovies != null) {
+            mMovies.clearMovies();
+        }
 
         mDataManager = new DataManager(this);
 
-        mMovies = MovieList.get(this);
         mUserInput = (EditText) findViewById(R.id.find_actor_input);
 
         mAddButton = (Button) findViewById(R.id.find_actor_add_button);
@@ -83,6 +85,12 @@ public class FindActorActivity extends FragmentActivity {
                     .add(R.id.find_actor_list_container, fragment)
                     .commit();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadPanel.setVisibility(View.GONE);
     }
 
     public void addPressed() {
@@ -120,6 +128,13 @@ public class FindActorActivity extends FragmentActivity {
         } else {
             Toast.makeText(this, R.string.toast_no_title_entered, Toast.LENGTH_SHORT).show();
         }
+
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
+
     }
 
     // Once submit is pressed show a loading dialog
@@ -132,28 +147,9 @@ public class FindActorActivity extends FragmentActivity {
         mActorList = ActorList.get(this);
         mActorList.clear();
 
-
-
-
-        mDataManager = new DataManager(this);
-        mActorIds = mDataManager.getCommonActorIds(this);
-        mActors = mDataManager.getActorBios(mActorIds);
-
         Intent i = new Intent(this, ActorResultActivity.class);
         startActivity(i);
 
     }
 
-    public void onEvent(RetrofitEvent event) {
-
-        if (event.isRetrofitCompleted()) {
-            // hide dialog and do whats needed here
-            loadPanel.setVisibility(View.GONE);
-
-
-        } else {
-            // the request may have failed so update failsafe here
-        }
-
-    }
 }

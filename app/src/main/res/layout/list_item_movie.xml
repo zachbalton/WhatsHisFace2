@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_width="48dp"
         android:layout_alignParentRight="true"
-        android:text="@string/list_item_movie_remove" />
+        android:text="@string/list_item_movie_remove"
+        />
 
 </RelativeLayout>

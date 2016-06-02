@@ -31,6 +31,7 @@ public class DataManager {
     private MovieList mMovies;
     private List<Actor> actors;
     private int mId;
+    private Actor actor;
 
     public DataManager(Context context) {
         updateRef(context);
@@ -174,8 +175,10 @@ public class DataManager {
     }
 
     // TODO make API Call to fetch Actor details given an ActorId. Return completed Actor.
-    public List<Actor> getActorBios(List<Integer> actorIds) {
 
+    // getActorBios(List<Integer>) returns a full list of bios (as a List<Actor>) given the set of actor ids
+    public List<Actor> getActorBios(List<Integer> actorIds) {
+        Log.e("getActorBios(actorIds)", "THIS IS GETTING CALLED FOR SOME REASON");
         actors = new ArrayList<>();
         TheMovieDBService client = TheMovieDBServiceGenerator.createService(TheMovieDBService.class);
 
@@ -208,6 +211,32 @@ public class DataManager {
         Log.d("getActorDetails(actor)", "getActorDetails(actors) called");
 
         return actors;
+    }
+
+    // Return singular actor given actorId
+    public Actor getActorBio(Integer actorId) {
+        TheMovieDBService client = TheMovieDBServiceGenerator.createService(TheMovieDBService.class);
+
+        Call<Actor> call = client.getActorDetails(actorId, TheMovieDBService.API_KEY);
+        call.enqueue(new Callback<Actor>() {
+
+            @Override
+            public void onResponse(Call<Actor> call, Response<Actor> response) {
+                if (response.isSuccess()) {
+                    actor = response.body();
+                    Log.d("getActorBio(actorId)", "Actor: " + response.body().getName() + " added to results.");
+                } else {
+                    // Figure out EventBut usage here
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Actor> call, Throwable t) {
+                Log.e("getActorBio(actorId)", t.getMessage());
+            }
+        });
+
+        return actor;
     }
 
 

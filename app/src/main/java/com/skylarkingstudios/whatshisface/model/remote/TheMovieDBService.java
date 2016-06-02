@@ -35,4 +35,7 @@ public interface TheMovieDBService {
     Call<String> getActorPoster(@Path("id") int actorId,
                                 @Query("api_key") String apiKey);
 
+    // Get API Configuration values
+    @GET("configuration")
+    Call<String> getConfig(@Query("api_key") String apiKey);
 }

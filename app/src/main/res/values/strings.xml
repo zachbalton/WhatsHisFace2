@@ -1,8 +1,9 @@
 <resources>
 
     <string name="app_name">WhatsHisFace</string>
-    <string name="movie_button">Who\'s That Actor From These Movies?</string>
-    <string name="actor_button">What\'s That Movie With These Actors?</string>
+    <string name="movie_button">Find an Actor</string>
+    <string name="actor_button">Find a Movie</string>
+    <string name="about_button">About</string>
 
     <string name="find_actor_input_hint">Enter a Movie Title</string>
     <string name="find_actor_add_button">Add Movie to List</string>
@@ -20,5 +21,9 @@
     <string name="fragment_result_actor_bio">Bio: </string>
     <string name="fragment_result_actor_top_movies">Top Billed Movies: </string>
     <string name="fragment_result_actor_content_description">Celebrity portrait image</string>
+    <string name="fragment_result_actor_new_search">New Search</string>
+    <string name="fragment_result_actor_no_dob">No Date of Birth on record.</string>
+    <string name="fragment_result_actor_no_bio">No Bio on record.</string>
+    <string name="fragment_result_actor_result">results found</string>
 
 </resources>

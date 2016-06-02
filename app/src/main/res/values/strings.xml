@@ -26,4 +26,12 @@
     <string name="fragment_result_actor_no_bio">No Bio on record.</string>
     <string name="fragment_result_actor_result">results found</string>
 
+    <string name="find_actor_activity_intro_text">What Movies Are They In?</string>
+    <string name="find_actor_activity_add_button">Add Movie Button</string>
+    <string name="find_actor_activity_add_movie">Add a Movie</string>
+    <string name="find_actor_activity_add_another_movie">Add another?</string>
+
+    <string name="menu_help">Help</string>
+    <string name="menu_about">About</string>
+
 </resources>

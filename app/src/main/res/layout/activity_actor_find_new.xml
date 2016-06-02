@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+    android:layout_marginBottom="4dp"
+    android:weightSum="2">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/find_actor_activity_intro_text"
+        tools:text="@string/find_actor_activity_intro_text"
+        android:gravity="center"
+        android:layout_marginTop="8dp"/>
+
+    <LinearLayout android:id="@+id/first_movie_row"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout android:id="@+id/first_movie_layout"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_weight="1">
+
+            <ImageButton android:id="@+id/add_movie_button_1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/find_actor_activity_add_button"
+                android:src="@drawable/addmovieicon"
+                android:background="#FFF"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"
+                android:scaleType="centerInside"
+                android:cropToPadding="false"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/find_actor_activity_add_movie"
+                tools:text="Add a Movie"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/second_movie_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageButton android:id="@+id/add_movie_button_2"
+                 android:layout_width="wrap_content"
+                 android:layout_height="0dp"
+                 android:layout_weight="1"
+                 android:adjustViewBounds="true"
+                 android:contentDescription="@string/find_actor_activity_add_button"
+                 android:src="@drawable/addmovieicon"
+                 android:background="#FFF"
+                 android:layout_marginTop="16dp"
+                 android:layout_marginBottom="4dp"
+                 android:scaleType="centerInside"
+                 android:cropToPadding="false"
+                 android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/find_actor_activity_add_another_movie"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout   android:id="@+id/second_movie_row"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout   android:id="@+id/third_movie_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageButton android:id="@+id/add_movie_button_3"
+                 android:layout_width="wrap_content"
+                 android:layout_height="0dp"
+                 android:layout_weight="1"
+                 android:adjustViewBounds="true"
+                 android:contentDescription="@string/find_actor_activity_add_button"
+                 android:src="@drawable/addmovieicon"
+                 android:background="#FFF"
+                 android:layout_marginTop="16dp"
+                 android:layout_marginBottom="4dp"
+                 android:scaleType="centerInside"
+                 android:cropToPadding="false"
+                 android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/find_actor_activity_add_another_movie"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout   android:id="@+id/fourth_movie_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageButton android:id="@+id/add_movie_button_4"
+                 android:layout_width="wrap_content"
+                 android:layout_height="0dp"
+                 android:layout_weight="1"
+                 android:adjustViewBounds="true"
+                 android:contentDescription="@string/find_actor_activity_add_button"
+                 android:src="@drawable/addmovieicon"
+                 android:background="#FFF"
+                 android:layout_marginTop="16dp"
+                 android:layout_marginBottom="4dp"
+                 android:scaleType="centerInside"
+                 android:cropToPadding="false"
+                 android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/find_actor_activity_add_another_movie"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_search_white_36dp"/>
+
+
+</LinearLayout>

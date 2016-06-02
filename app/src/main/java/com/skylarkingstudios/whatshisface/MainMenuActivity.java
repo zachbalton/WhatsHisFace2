@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +38,14 @@ public class MainMenuActivity extends AppCompatActivity {
 
         mFindMovie = (ImageButton) findViewById(R.id.main_menu_actor_button);
         mFindMovie.setColorFilter(Color.argb(255, 164, 148, 59));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
     }
 
 }

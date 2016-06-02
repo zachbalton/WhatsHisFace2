@@ -6,7 +6,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.skylarkingstudios.whatshisface.model.Actor;
 import com.skylarkingstudios.whatshisface.model.ActorList;
@@ -23,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ActorResultActivity extends FragmentActivity {
+public class ActorResultActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private ActorList mFinalActorList;
@@ -45,6 +48,14 @@ public class ActorResultActivity extends FragmentActivity {
 
         mActorList = getActorBios(mActorIds);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     // getActorBios(List<Integer>) returns a full list of bios (as a List<Actor>) given the set of actor ids

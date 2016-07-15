@@ -23,14 +23,14 @@ public class Movie {
     @SerializedName("overview")
     private String plot;
 
-    @SerializedName("poster_path")
-    private String posterURL;
-
     @SerializedName("id")
     private int id;
 
     @SerializedName("cast")
     private List<Actor> cast = new ArrayList<>();
+
+    @SerializedName("poster_path")
+    private String posterURL;
 
     private String castArray[];
 
@@ -60,4 +60,8 @@ public class Movie {
         this.cast = cast;
     }
 
+    public String getPosterURL() {
+        return posterURL;
+
+    }
 }

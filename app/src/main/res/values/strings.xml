@@ -31,6 +31,9 @@
     <string name="find_actor_activity_add_movie">Add a Movie</string>
     <string name="find_actor_activity_add_another_movie">Add another?</string>
 
+    <string name="no_results_found_desc">No Common Actors Found</string>
+    <string name="no_result_search_again_button">New Search</string>
+
     <string name="menu_help">Help</string>
     <string name="menu_about">About</string>
 

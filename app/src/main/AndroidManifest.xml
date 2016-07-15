@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".FindActorActivity"
-                  android:windowSoftInputMode="adjustPan" >
+                  android:windowSoftInputMode="adjustUnspecified"
+            >
 
         </activity>
         <activity android:name=".ActorResultActivity"

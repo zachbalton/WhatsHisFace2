@@ -161,6 +161,7 @@ public class DataManager {
                 }
             }
 
+        // If one movie is present just show top 4 billed actors
         } else {
             for (Actor actor : mMovies.getMovies().get(0).getCast()) {
                 counter+=1;
@@ -171,7 +172,13 @@ public class DataManager {
                 }
             }
         }
-        return actorIdResults;
+
+        // If more than one movie is cross checked but no actor appears in more than one cast, return null, else return the list
+        if (maxFrequency == 1 && mMovies.getMovies().size() > 1) {
+            return null;
+        } else {
+            return actorIdResults;
+        }
     }
 
     // TODO make API Call to fetch Actor details given an ActorId. Return completed Actor.
@@ -205,7 +212,6 @@ public class DataManager {
 
             });
 
-
         }
 
         Log.d("getActorDetails(actor)", "getActorDetails(actors) called");
@@ -225,8 +231,6 @@ public class DataManager {
                 if (response.isSuccess()) {
                     actor = response.body();
                     Log.d("getActorBio(actorId)", "Actor: " + response.body().getName() + " added to results.");
-                } else {
-                    // Figure out EventBut usage here
                 }
             }
 

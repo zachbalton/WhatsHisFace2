@@ -1,5 +1,6 @@
 package com.skylarkingstudios.whatshisface;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -10,9 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.widget.Button;
 
 import com.skylarkingstudios.whatshisface.model.Actor;
 import com.skylarkingstudios.whatshisface.model.ActorList;
+import com.skylarkingstudios.whatshisface.model.MovieList;
 import com.skylarkingstudios.whatshisface.model.RetrofitEvent;
 import com.skylarkingstudios.whatshisface.model.remote.TheMovieDBService;
 import com.skylarkingstudios.whatshisface.model.remote.TheMovieDBServiceGenerator;
@@ -29,11 +33,13 @@ import retrofit2.Response;
 public class ActorResultActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
+    private Button mNewSearch;
     private ActorList mFinalActorList;
     private List<Integer> mActorIds;
     private List<Actor> mActorList;
     private Actor mActor;
     private DataManager mDataManager;
+    private MovieList mMovies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +49,17 @@ public class ActorResultActivity extends AppCompatActivity {
         mFinalActorList = ActorList.get(this);
         mFinalActorList.clear();
 
+        mMovies = MovieList.get(this);
+
         mDataManager = new DataManager(this);
         mActorIds = mDataManager.getCommonActorIds(this);
 
-        mActorList = getActorBios(mActorIds);
+        // if getCommonActorIds returns null then do not get actor bios, instead add a single actor to fill "No Results Found" page out
+        if (mActorIds == null) {
+            setNoResults();
+        } else {
+            mActorList = getActorBios(mActorIds);
+        }
 
     }
 
@@ -56,6 +69,19 @@ public class ActorResultActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void setNoResults() {
+        setContentView(R.layout.no_results);
+        mNewSearch = (Button) findViewById(R.id.new_search_button);
+
+        mNewSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getBaseContext(), MainMenuActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     // getActorBios(List<Integer>) returns a full list of bios (as a List<Actor>) given the set of actor ids
@@ -73,7 +99,6 @@ public class ActorResultActivity extends AppCompatActivity {
                     if (response.isSuccess()) {
                         mFinalActorList.add(response.body());
                         Log.d("getActorBios(actorIds)", "Actor: " + response.body().getName() + " added to results.");
-
 
                         // If ActorList is now full i.e. this is the last call
                         if (mFinalActorList.getActors().size() == mActorIds.size()) {
@@ -107,7 +132,6 @@ public class ActorResultActivity extends AppCompatActivity {
                 }
 
             });
-
 
         }
 

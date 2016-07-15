@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp" >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/loading_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center" >
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/find_actor_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/find_actor_input_hint"
+        android:inputType="textCapWords"/>
+
+    <Button
+        android:id="@+id/find_actor_add_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/find_actor_add_button"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/find_actor_your_list"
+        android:layout_marginTop="16dp" />
+
+    <FrameLayout
+        android:id="@+id/find_actor_list_container"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight=".975" >
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/find_actor_search_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/find_actor_search_button"
+        android:layout_weight=".025"
+        android:layout_marginTop="8dp"
+
+         />
+
+</LinearLayout>
